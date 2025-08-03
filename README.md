@@ -1,2 +1,6 @@
 # cpp
-oop &amp; cpp concepts
+1. ### Namespaces
+Example:
+```cpp
+using namespace std;
+```
