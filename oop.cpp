@@ -12,7 +12,7 @@ public:
     MyClass();  // constructor
     ~MyClass(); // destructor
 
-    int getMyDataSROP(); // getter using scope resolutio
+    int getMyDataSROP(); // getter using scope resolution
 
     int getMyData() // normal getter
     {
@@ -31,6 +31,9 @@ MyClass::MyClass()
 
 MyClass::~MyClass()
 {
+    free(&myData);
+    free(&myPublicData);
+    free(this);
 }
 
 /**
@@ -47,7 +50,12 @@ int main(int argc, char const *argv[])
 
     cout << mc->myPublicData << "\n";
     cout << mc->getMyData() << "\n";
-    cout << mc->getMyDataSROP();
+    cout << mc->getMyDataSROP() << "\n";
+
+    mc->~MyClass();
+
+    cout << mc->myPublicData << "\n";
+    cout << mc->getMyData();
 
     return 0;
 }
